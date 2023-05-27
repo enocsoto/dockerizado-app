@@ -1,13 +1,15 @@
 import { DataSource, DataSourceOptions } from "typeorm";
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { SeederOptions } from "typeorm-extension";
+import { MainSeeder } from "src/seed/mainSeeder";
 
 ConfigModule.forRoot({});
 
 const configService = new ConfigService();
 
-export const dataSourceOptions: DataSourceOptions = {
+export const dataSourceOptions: DataSourceOptions &  SeederOptions = {
   
-  type: 'mysql', // aquí debe especificar su tipo de base de datos, puede ser mysql, postgresql, sqlite, etc.
+  type: 'mysql',
   host: configService.get('DB_HOST'),
   port: configService.get('DB_PORT'),
   username: configService.get('DB_USER'),
@@ -16,8 +18,8 @@ export const dataSourceOptions: DataSourceOptions = {
   entities: [__dirname + '/../**/**/*.entity{.ts,.js}'],
   migrations: [__dirname + '/../../migrations/*{.ts,.js}'],
   synchronize: false,
+  seeds: [MainSeeder]
 }
-console.log(dataSourceOptions.host,)
 
 
 export const dataSource = new DataSource(dataSourceOptions);

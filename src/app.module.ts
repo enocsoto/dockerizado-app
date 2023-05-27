@@ -8,13 +8,12 @@ import { dataSourceOptions } from './config/data-source';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true,
-    }),
+    ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({ ...dataSourceOptions }),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'src/client'),
     }),
     UserModule,
-  ]
+  ],
 })
 export class AppModule {}

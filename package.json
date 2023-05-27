@@ -19,9 +19,9 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "typeorm": "npm run build && npx typeorm -d dist/src/config/data-source.js",
-    "migration:generate": "npm run typeorm -- migration:generate",
-    "migration:run": "npm run typeorm -- migration:run",
-    "migration:revert": "npm run typeorm -- migration:revert",
+    "mi:g": "npm run typeorm -- migration:generate",
+    "mi:run": "npm run typeorm -- migration:run",
+    "mi:revert": "npm run typeorm -- migration:revert",
     "seed": "ts-node ./node_modules/typeorm-extension/dist/cli/index.js seed -d dist/src/config/data-source.js"
   },
   "dependencies": {

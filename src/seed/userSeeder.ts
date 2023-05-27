@@ -17,8 +17,10 @@ export class UserSeeder implements Seeder {
       id: faker.datatype.uuid(),
       name: faker.name.firstName(),
       lastname: faker.name.lastName(),
+      username: faker.internet.userName(),
       email: faker.internet.email(),
       createdat: faker.date.recent(),
+      updatedat:faker.date.recent()
     };
     const newUser = userRepository.create(setSeederFactory);
     await userRepository.save(newUser);

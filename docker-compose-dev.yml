@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  nestjs:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    links:
+      - monngodb
+  mongo:
+    image: mongo:5
+    ports:
+      - "27018:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=enoc
+      - MONGO_INITDB_ROOT_PASSWORD=PASS
+    volumes:
+      -./mongo:/data/db

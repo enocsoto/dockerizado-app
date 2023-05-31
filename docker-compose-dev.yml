@@ -1,19 +1,18 @@
-version: "3.9"
+version: "3.1"
 services:
-  nestjs:
-    build: 
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
-    links:
-      - monngodb
-  mongo:
-    image: mongo:5
-    ports:
-      - "27018:27017"
+  db:
+    container_name: prueba_db4
+    image: mysql
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=enoc
-      - MONGO_INITDB_ROOT_PASSWORD=PASS
-    volumes:
-      -./mongo:/data/db
+      MYSQL_ROOT_PASSWORD: "1234"
+      MYSQL_PASSWORD: "1234"   
+      MYSQL_DATABASE: "prueba_db"
+      MYSQL_USER: "enoc"
+    ports:
+      - "3306:3306"
+    networks:
+      - reddepruebas
+
+networks:
+  reddepruebas:
+    external: truemiapp

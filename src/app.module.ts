@@ -10,9 +10,6 @@ import { dataSourceOptions } from './config/data-source';
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({ ...dataSourceOptions }),
-    ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'src/client'),
-    }),
     UserModule,
   ],
 })
